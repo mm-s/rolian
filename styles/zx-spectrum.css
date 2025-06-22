@@ -1,5 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: black;
+  overflow: hidden;
+}
+
+.zx-frame {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px;
+  box-sizing: border-box;
+  background: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zx-screen {
+  width: 640px;
+  height: 480px;
+  background: black;
+  color: #0f0;
+  font-family: monospace;
+  padding: 2rem;
+  box-shadow: 0 0 0 2px #444;
+}
+
 .zx-background {
   background-color: #000;
   color: #fff;
@@ -79,5 +110,76 @@
   to {
     visibility: hidden;
   }
+}
+
+
+@keyframes zx-fullscreen-flash {
+  0%   { background-color: #0000ff; } /* blue */
+  25%  { background-color: #ff0000; } /* red */
+  50%  { background-color: #ffff00; } /* yellow */
+  75%  { background-color: #00ff00; } /* green */
+  100% { background-color: #0000ff; } /* loop back */
+}
+
+.zx-background.loading {
+  animation: zx-fullscreen-flash 0.2s infinite;
+}
+
+@keyframes zx-flash-border {
+  0%   { box-shadow: 0 0 0 4px #f00, 0 0 0 8px #ff0, 0 0 0 12px #0f0; }
+  25%  { box-shadow: 0 0 0 4px #00f, 0 0 0 8px #0ff, 0 0 0 12px #f0f; }
+  50%  { box-shadow: 0 0 0 4px #ff0, 0 0 0 8px #f00, 0 0 0 12px #00f; }
+  75%  { box-shadow: 0 0 0 4px #0f0, 0 0 0 8px #ff0, 0 0 0 12px #f0f; }
+  100% { box-shadow: 0 0 0 4px #f00, 0 0 0 8px #ff0, 0 0 0 12px #0f0; }
+}
+
+.zx-border {
+  border: 4px solid #00f;
+  background: #111;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.zx-border.loading {
+  animation: zx-flash-border 0.3s infinite;
+}
+
+.zx-border-frame {
+  width: 100vw;
+  height: 100vh;
+  padding: 100px;
+  box-sizing: border-box;
+  background-color: #0000ff; /* default border color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@keyframes zx-pilot-flash {
+  0%, 100% { background-color: cyan; }
+  50% { background-color: white; }
+}
+
+.zx-border-frame.pilot-tone {
+  animation: zx-pilot-flash 0.15s steps(1, end) infinite;
+}
+
+@keyframes flash-white-cyan {
+  0%   { border-color: white; }
+  50%  { border-color: cyan; }
+  100% { border-color: white; }
+}
+
+.zx-border-frame.flash-init {
+  animation: flash-white-cyan 0.25s linear 4; /* 4 cycles: ~1s total */
+}
+
+@keyframes zx-flash-cyan-white {
+  0%, 100% { box-shadow: 0 0 0 100px cyan; }
+  50% { box-shadow: 0 0 0 100px white; }
+}
+
+.flash-border {
+  animation: zx-flash-cyan-white 0.2s steps(1, end) infinite;
 }
 
