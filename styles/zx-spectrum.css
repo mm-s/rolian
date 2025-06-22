@@ -1,1 +1,55 @@
-/* ZX Spectrum CSS from earlier */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.zx-background {
+  background-color: #000;
+  color: #fff;
+}
+
+.zx-border {
+  border: 4px solid #00f;
+  box-shadow:
+    0 0 0 4px #f00,
+    0 0 0 8px #ff0,
+    0 0 0 12px #0f0;
+  background: #111;
+}
+
+.zx-button {
+  background-color: #00f;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #fff;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.zx-button:hover {
+  background-color: #0ff;
+  color: #000;
+}
+
+.font-zx {
+  font-family: 'Press Start 2P', monospace;
+}
+
+.zx-loader {
+  height: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  animation: flicker 0.5s infinite alternate;
+}
+.zx-loader::before,
+.zx-loader::after {
+  content: '';
+  flex: 1;
+  margin: 0 2px;
+  height: 100%;
+  background: repeating-linear-gradient(45deg, red, red 5px, yellow 5px, yellow 10px);
+}
+
+@keyframes flicker {
+  from { opacity: 1; }
+  to { opacity: 0.3; }
+}
+
