@@ -5,7 +5,10 @@ import { ethers } from 'ethers';
 
 
 function playPilotTone() {
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+const audioCtx = new AudioContextClass();
+
+
   const oscillator = audioCtx.createOscillator();
   oscillator.type = 'square';
   oscillator.frequency.setValueAtTime(806, audioCtx.currentTime);
